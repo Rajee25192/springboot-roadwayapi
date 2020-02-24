@@ -1,6 +1,7 @@
 package com.roadmap.roadmapservice.service;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 
 import java.io.IOException;
 import java.util.Stack;
@@ -67,8 +68,32 @@ public class RoadmapServiceTest {
 	@Test
 	public void testfindDirectRouteYes() {
 		RoadmapService serv = new RoadmapService() {
-		
+			
 		};
-		assertEquals("Yes",serv.findDirectRoute("Boston", "New York"));
+		assertEquals("No",serv.findDirectRoute("Albany", "New York"));
+	}
+	
+	@Test
+	public void testfindConnectingRoute() {
+		RoadmapService serv = new RoadmapService() {
+			Route route = new Route("Boston","Philadelphia");
+			
+		};
+		assertNull(serv.findConnectingRoute("Philadelphia"));
+	}
+	
+	@Test
+	public void testFindRoute() {
+		RoadmapService serv = new RoadmapService() {
+			public String findDirectRoute(String origin, String destination) {
+				
+				return "Yes";
+			}
+			public Route findConnectingRoute(String origin) {
+				return routes[0];
+			}
+		};
+		
+		serv.findRoute("Boston", "Newark");
 	}
 }
