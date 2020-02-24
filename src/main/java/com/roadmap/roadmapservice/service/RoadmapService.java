@@ -64,7 +64,7 @@ public class RoadmapService {
 	 * 
 	 * @param destination
 	 */
-	private void route(String destination) {
+	public void route(String destination) {
 		Stack<Route> rev = new Stack<Route>();
 		Route r;
 		int num = btStack.size();
@@ -88,7 +88,7 @@ public class RoadmapService {
 	 * @param origin
 	 * @param destination
 	 */
-	private void findRoute(String origin, String destination) {
+	public void findRoute(String origin, String destination) {
 
 		logger.info("Finding the route for 2 different cities");
 		Route direction;
@@ -122,7 +122,7 @@ public class RoadmapService {
 	 * @param origin
 	 * @return
 	 */
-	private Route findConnectingRoute(String origin) {
+	public Route findConnectingRoute(String origin) {
 
 		for (int i = 0; i < size; i++) {
 			if (routes[i].getOrigin().equalsIgnoreCase(origin) && !routes[i].skip) {
@@ -144,7 +144,7 @@ public class RoadmapService {
 	 * @param destination
 	 * @return
 	 */
-	private String findDirectRoute(String origin, String destination) {
+	public String findDirectRoute(String origin, String destination) {
 		logger.info("Find Direct route available method {} to {}", origin, destination);
 		for (int i = size - 1; i > -1; i--) {
 			if (((routes[i].getOrigin().equalsIgnoreCase(origin)
